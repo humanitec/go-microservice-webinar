@@ -1,0 +1,55 @@
+version: '3.5'
+
+services:
+  web:
+    build:
+      context: .
+      target: builder
+    environment:
+      APP_PORT: "9000"
+      DATABASE_HOST: "elasticsearch"
+      DATABASE_PORT: "9200"
+      CACHE_HOST: "redis"
+      CACHE_PORT: "6379"
+      CACHE_DATABASE: "1"
+      CACHE_PASSWORD: ""
+      CACHE_USERNAME: ""
+    command: make build wait run
+    volumes:
+      - .:/app
+    ports:
+      - 9000:9000
+    networks:
+      - dev
+    depends_on:
+      - elasticsearch
+      - redis
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - dev
+  redis:
+    image: "redis:6.0.8-alpine"
+    ports:
+      - "6379:6379"
+    networks:
+      - dev
+
+networks:
+  dev:
+    name: log_service_network
