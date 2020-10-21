@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/humanitec/click-counter/internal/campaign"
+	"github.com/humanitec/webinar-click-counter/internal/campaign"
 	"log"
 	"net/http"
 )
@@ -19,6 +19,7 @@ func main() {
 	http.HandleFunc("/ready", ready)
 	http.HandleFunc("/live", live)
 
+	log.Printf("app initialized at port %v", conf.Port)
 	if err := http.ListenAndServe(":9000", nil); err != nil {
 		log.Fatalf("server error: %v", fmt.Errorf("%w", err))
 	}

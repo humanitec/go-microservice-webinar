@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/humanitec/click-counter/internal/campaign"
+	"github.com/humanitec/webinar-click-counter/internal/campaign"
 	"log"
 	"net/http"
 	"time"
@@ -21,15 +21,17 @@ func redirect(_ *campaign.Settings, svc *campaign.ClickService) func(http.Respon
 		}
 
 		// save the click data
+		//go func() {
 		if err := svc.AddClick(data); err != nil {
 			log.Printf("error storing click information: %v", fmt.Errorf("%w", err))
 			w.WriteHeader(500)
 			return
 		}
+		//}()
 
 		// response with the redirect
 		w.Header().Add("Location", destination)
-		w.WriteHeader(302)
+		w.WriteHeader(http.StatusFound)
 		log.Printf("redirecting from %s to %s", origin, destination)
 	}
 }

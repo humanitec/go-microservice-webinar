@@ -1,6 +1,6 @@
 FROM golang:alpine AS builder
 
-RUN apk update && apk add --no-cache make
+RUN apk update && apk add --no-cache make bash
 RUN adduser -D -g '' appuser
 
 WORKDIR /app
