@@ -12,6 +12,8 @@ FROM scratch
 
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /app/bin/cc /app/bin/cc
+COPY --from=builder /app/bin/click.json /app/bin/click.json
+
 USER appuser
 EXPOSE 9000
 

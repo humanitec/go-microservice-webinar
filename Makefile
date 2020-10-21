@@ -22,15 +22,16 @@ usage: Makefile
 build:
 	@echo "==> Building binary (bin/$(BIN_WEBSERVER))..."
 	$(ENVFLAGS) $(GO) build -v -o bin/$(BIN_WEBSERVER) $(BUILD_PATH)
+	@cp internal/campaign/mappings/clicks.json bin/clicks.json
 
 ## test: run unit tests
 test:
-	@echo  "==> Running tests with envs:"
-	$(GO) test -v -race -cover
+	@echo  "==> Running tests in all current directories and subdirectories:"
+	$(GO) test -v -race -cover ./...
 
 ## run: run server
 run:
-	@echo "==> Running server with envs:"
+	@echo "==> Running server:"
 	./bin/$(BIN_WEBSERVER) $(args)
 
 ## wait: used only to wait for database connections

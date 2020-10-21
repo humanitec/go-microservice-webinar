@@ -3,7 +3,7 @@ package campaign
 import "time"
 
 type Click struct {
-	Origin      string
-	Destination string
-	CreatedAt   time.Time
+	Origin      string    `json:"origin"`
+	Destination string    `json:"destination"`
+	Timestamp   time.Time `json:"timestamp"`
 }
