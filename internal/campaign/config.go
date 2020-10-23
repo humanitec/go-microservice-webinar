@@ -11,7 +11,7 @@ type Settings struct {
 	DatabasePort  int    `envconfig:"DATABASE_PORT" default:"9200"`
 	DatabaseProto string `envconfig:"DATABASE_PROTO" default:"http"`
 	DatabaseIndex string `envconfig:"DATABASE_INDEX_FORMAT" default:"clicks"`
-	MappingPath   string `envconfig:"DATABASE_MAPPING_PATH" default:"/app/bin/click.json"`
+	MappingPath   string `envconfig:"DATABASE_MAPPING_PATH" default:"/app/bin/clicks.json"`
 }
 
 func NewSettings() *Settings {

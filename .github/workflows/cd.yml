@@ -42,7 +42,7 @@ jobs:
           DATABASE_PORT: "9200"
           DATABASE_PROTO: "http"
           DATABASE_INDEX_FORMAT: "clicks"
-          DATABASE_MAPPING_PATH: "/app/bin/click.json"
+          DATABASE_MAPPING_PATH: "/app/bin/clicks.json"
   publish:
     name: Build Docker Image
     runs-on: ubuntu-latest
