@@ -50,7 +50,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
       - name: Build and Push to Humanitec
         uses: humanitec/build-push-to-humanitec@v1
         with:

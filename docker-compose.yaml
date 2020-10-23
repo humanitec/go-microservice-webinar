@@ -40,4 +40,4 @@ services:
 
 networks:
   dev:
-    name: log_service_network
+    name: service_network

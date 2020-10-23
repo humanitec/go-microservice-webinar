@@ -13,7 +13,6 @@ func redirect(_ *campaign.Settings, svc *campaign.ClickService) func(http.Respon
 		// get the data from the request
 		origin := r.URL.Query().Get("o")
 		destination := r.URL.Query().Get("d")
-
 		data := campaign.Click{
 			Origin:      origin,
 			Destination: destination,
@@ -23,7 +22,7 @@ func redirect(_ *campaign.Settings, svc *campaign.ClickService) func(http.Respon
 		// save the click data
 		//go func() {
 		if err := svc.AddClick(data); err != nil {
-			log.Printf("error storing click information: %v", fmt.Errorf("%w", err))
+			log.Printf("error storing click info: %v", fmt.Errorf("%w", err))
 			w.WriteHeader(500)
 			return
 		}
@@ -33,6 +32,9 @@ func redirect(_ *campaign.Settings, svc *campaign.ClickService) func(http.Respon
 		w.Header().Add("Location", destination)
 		w.WriteHeader(http.StatusFound)
 		log.Printf("redirecting from %s to %s", origin, destination)
+		//w.Header().Add("Location", destination)
+		//w.WriteHeader(http.StatusFound)
+		//log.Printf("redirecting from %s to %s", origin, destination)
 	}
 }
 
