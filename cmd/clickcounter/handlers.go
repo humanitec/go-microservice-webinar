@@ -32,9 +32,6 @@ func redirect(_ *campaign.Settings, svc *campaign.ClickService) func(http.Respon
 		w.Header().Add("Location", destination)
 		w.WriteHeader(http.StatusFound)
 		log.Printf("redirecting from %s to %s", origin, destination)
-		//w.Header().Add("Location", destination)
-		//w.WriteHeader(http.StatusFound)
-		//log.Printf("redirecting from %s to %s", origin, destination)
 	}
 }
 

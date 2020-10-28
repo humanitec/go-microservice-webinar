@@ -18,7 +18,7 @@ func main() {
 	http.HandleFunc("/", redirect(conf, svc))
 	http.HandleFunc("/ready", ready)
 	http.HandleFunc("/live", live)
-	//
+
 	log.Printf("app initialized at port %v", conf.Port)
 	if err := http.ListenAndServe(fmt.Sprintf(":%v", conf.Port), nil); err != nil {
 		log.Fatalf("server error: %v", fmt.Errorf("%w", err))
