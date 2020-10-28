@@ -1,4 +1,4 @@
-# Webinar Click Counter Documentation
+# Webinar Click Counter Documentation ![Continuous Integration](https://github.com/Humanitec/go-microservice-webinar/workflows/Continuous%20Integration/badge.svg)
 
 This the source code of Webinar: Building and running a Go microservice with ElasticSearch on Kubernetes
 
